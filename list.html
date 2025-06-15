@@ -6,70 +6,156 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>list.html</title>
   <style>
-    #no1 {
-      display: flex;
-      /* flex-direction: column; */
-      /* align-items: center; */
+    table {
       justify-content: center;
       margin: 10px auto;
+      display: block;
+      table-layout: fixed;
+      width: 90%;
+      max-width: 100%;
+
     }
-    h1{
-      
+
+    h1 {
+      text-align: center;
+    }
+
+    th {
+      border-bottom: 0.5px solid #bdb3b3;
+      padding: 10px;
+    }
+
+    th,
+    td {
+      padding: 12px 8px;
+      /* 위아래 12px, 좌우 8px */
+    }
+
+    .pagination {
+      text-align: center;
+      /* margin-top: 20px; */
+    }
+
+    .pagination button {
+      cursor: pointer;
+      border: none;
+      margin: 10px 10px;
+      background-color: white;
     }
   </style>
 </head>
 
 <body>
-  <h1>자유게시판</h1>
-  <table>
-    <thead>
-      <tr>
-        <th id="num">번호</th>
-        <th id="title">제목</th>
-        <th id="writer">작성자</th>
-        <th id="date">날짜</th>
-        <th id="hits">조회수</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>제목1</td>
-        <td>작성자1</td>
-        <td>날짜1</td>
-        <td>조회수1</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>제목2</td>
-        <td>작성자2</td>
-        <td>날짜2</td>
-        <td>조회수2</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>제목3</td>
-        <td>작성자3</td>
-        <td>날짜3</td>
-        <td>조회수3</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>제목4</td>
-        <td>작성자4</td>
-        <td>날짜4</td>
-        <td>조회수4</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>제목5</td>
-        <td>작성자5</td>
-        <td>날짜5</td>
-        <td>조회수5</td>
-      </tr>
-    </tbody>
+  <div>
+    <h1>자유게시판</h1>
+    <table>
+      <colgroup>
+        <col style="width: 8%;">
+        <col style="width: 60%;">
+        <col style="width: 15%;">
+        <col style="width: 15%;">
+        <col style="width: 10%;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>날짜</th>
+          <th>조회수</th>
+        </tr>
+      </thead>
+      <tbody id="tablebody">
 
-  </table>
+      </tbody>
+
+    </table>
+  </div>
+
+  <div class="pagination">
+    <button onclick="changePage(currentPage - 1)">◀ 이전</button>
+    <!-- <button onclick="changePage(1)">1</button>
+  <button onclick="changePage(2)">2</button>
+  <button onclick="changePage(3)">3</button> -->
+    <span id="page-numbers"></span>
+    <button onclick="changePage(currentPage + 1)">다음 ▶</button>
+  </div>
+
+  <script>
+    const data = [
+      { num: 10, title: "공지사항 - 시험 일정 안내", writer: "관리자", date: "2025-06-13", views: 120 },
+      { num: 9, title: "자유주제 토론 열렸습니다", writer: "홍길동", date: "2025-06-12", views: 87 },
+      { num: 8, title: "오늘 급식 정보", writer: "영희", date: "2025-06-12", views: 42 },
+      { num: 7, title: "방과후 수업 신청 안내", writer: "관리자", date: "2025-06-11", views: 61 },
+      { num: 6, title: "운동회 사진 공유해요", writer: "철수", date: "2025-06-10", views: 73 },
+      { num: 5, title: "시험 끝나고 뭐할거예요?", writer: "민수", date: "2025-06-10", views: 55 },
+      { num: 4, title: "질문 있습니다 (수학)", writer: "수정", date: "2025-06-09", views: 36 },
+      { num: 3, title: "웹사이트 버그 발견", writer: "태현", date: "2025-06-09", views: 24 },
+      { num: 2, title: "방명록 기능 추가 제안", writer: "지민", date: "2025-06-08", views: 19 },
+      { num: 1, title: "첫 번째 게시글입니다!", writer: "관리자", date: "2025-06-08", views: 100 },
+
+    ];
+
+    // let html = ""
+    // data.forEach((item) => {
+    //   html = html + `
+    //   <tr>
+    //     <td>${item.num}</td>
+    //     <td>${item.title}</td>
+    //     <td>${item.writer}</td>
+    //     <td>${item.date}</td>
+    //     <td>${item.views}</td>
+    //   </tr>
+    // `;
+    // });
+    // document.querySelector("#tablebody").innerHTML = html
+    let currentPage = 1;
+    let perPage = 5;
+
+    let changePage = function (pageNum) {
+      currentPage = pageNum;
+
+      //let page = 1;
+
+      let start = (currentPage - 1) * perPage; // 예: (1-1)*5 = 0
+      let end = start + perPage;        // 0 + 5 = 5
+
+      let pageData = data.slice(start, end);
+
+      let html = ""
+
+      pageData.forEach((item) => {
+        html = html + `
+    <tr>
+      <td>${item.num}</td>
+      <td>${item.title}</td>
+      <td>${item.writer}</td>
+      <td>${item.date}</td>
+      <td>${item.views}</td>
+    </tr>
+  `;
+      });
+      document.querySelector("#tablebody").innerHTML = html
+
+    }
+    changePage(1);
+
+    //총 페이지 수 계산
+    let totalPage = Math.ceil(data.length / perPage)
+
+    const container = document.querySelector("#page-numbers");
+    container.innerHTML = "";
+
+    for (let i = 1; i <= totalPage; i++) {
+      const btn = document.createElement("button")
+      container.appendChild(btn);
+      btn.innerText = i;
+      btn.onclick = function () {
+        changePage(i);
+      };
+    }
+  </script>
+
 </body>
 
 </html>
