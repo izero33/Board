@@ -21,7 +21,7 @@
     }
 
     th {
-      border-bottom: 0.5px solid #bdb3b3;
+      border-bottom: 0.5px solid #E5E5E5;
       padding: 10px;
     }
 
@@ -42,12 +42,48 @@
       margin: 10px 10px;
       background-color: white;
     }
+
+    /* #top{
+      justify-content: center;
+      margin: 10px auto;
+      display: block;
+      table-layout: fixed;
+      width: 90%;
+      max-width: 100%;
+
+    } */
+    .loginPage {
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    #loginBtn {
+      background-color: white;
+      border: none;
+      font-size: 18px;
+      padding-left: 90%;
+
+    }
   </style>
 </head>
 
 <body>
-  <div>
-    <h1>자유게시판</h1>
+  <div id="top">
+    <h1 onclick="goHome()">자유게시판</h1>
+
+    <button id="loginBtn" onclick="showLogin()">로그인</button>
+  </div>
+
+  <div class="loginPage" style="display: none;">
+
+    이메일 <input type="email" style="border: #E5E5E5;">
+
+    비밀번호<input type="password" style="border: #E5E5E5;">
+  </div>
+
+
+
+  <div id="boardPage">
     <table>
       <colgroup>
         <col style="width: 8%;">
@@ -153,6 +189,22 @@
       btn.onclick = function () {
         changePage(i);
       };
+    }
+
+    //로그인
+    function showLogin() {
+      document.querySelector("#boardPage").style.display = "none";
+      document.querySelector(".pagination").style.display = "none";
+      document.querySelector(".loginPage").style.display = "block";
+      document.querySelector("#loginBtn").style.display = "none"
+
+    }
+
+    function goHome() {
+      document.querySelector("#boardPage").style.display = "block";
+      document.querySelector(".pagination").style.display = "block";
+      document.querySelector(".loginPage").style.display = "none";
+      document.querySelector("#loginBtn").style.display = "block"
     }
   </script>
 
