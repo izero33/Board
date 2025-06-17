@@ -1,0 +1,103 @@
+ table {
+   justify-content: center;
+   margin: 10px auto;
+   display: table;
+   table-layout: fixed;
+   width: 90%;
+   max-width: 100%;
+
+ }
+
+ h1 {
+   text-align: center;
+ }
+
+ th {
+   border-bottom: 0.5px solid #E5E5E5;
+   padding: 10px;
+ }
+
+ th,
+ td {
+   padding: 12px 8px;
+   /* 위아래 12px, 좌우 8px */
+ }
+
+ .pagination {
+   text-align: center;
+   /* margin-top: 20px; */
+ }
+
+ .pagination button {
+   cursor: pointer;
+   border: none;
+   margin: 10px 10px;
+   background-color: white;
+ }
+
+ /* #top{
+      justify-content: center;
+      margin: 10px auto;
+      display: block;
+      table-layout: fixed;
+      width: 90%;
+      max-width: 100%;
+
+    } */
+ .loginPage {
+   text-align: center;
+   padding-top: 100px;
+ }
+
+ #loginBtn {
+   background-color: white;
+   border: none;
+   font-size: 18px;
+   padding: 8px 16px;
+   cursor: pointer;
+
+ }
+
+ .top2 {
+   display: flex;
+   justify-content: space-between;
+   /* 양쪽 정렬 (버튼 왼쪽/오른쪽 배치 등) */
+   align-items: center;
+   margin: 10px 30px;
+ }
+
+ #wBtn {
+   /* margin-right: 5%; */
+   background-color: white;
+   border: none;
+   font-size: 18px;
+ }
+
+ .search {
+   display: flex;
+   padding-left: 3%;
+   padding-right: 70%;
+ }
+
+ #searchInput {
+   padding-right: 10%;
+   margin-right: 5px;
+ }
+
+ #searchBtn {
+   /* padding-right: 10%; */
+   width: 70px;
+   background-color: white;
+   border: none;
+   font-size: 18px;
+ }
+
+ /* #loginBtn{
+  height: 100px;
+  width: 200px;
+  padding-left: 50%;
+ } */
+
+ .hidden {
+   display: none !important;
+ }
