@@ -10,6 +10,8 @@
 
  h1 {
    text-align: center;
+   color: rgb(141, 114, 175);
+   cursor: pointer;
  }
 
  th {
@@ -49,13 +51,39 @@
    padding-top: 100px;
  }
 
- #loginBtn {
-   background-color: white;
-   border: none;
-   font-size: 18px;
-   padding: 8px 16px;
-   cursor: pointer;
+ .btn {
+   display: flex;
+   /* flex-direction: column; */
+   justify-self: center;
+   gap: 10px;
+ }
 
+ #loginSubmitBtn {
+   font-size: 16px;
+   width: 60px;
+   height: 30px;
+   border-radius: 15px;
+   color: rgb(255, 255, 255);
+   background-color: rgb(141, 114, 175);
+   border: none;
+ }
+
+ #loginSubmitBtn:hover {
+   background-color: rgb(111, 84, 145);
+ }
+
+ #joinBtn {
+   font-size: 16px;
+   width: 90px;
+   height: 30px;
+   border-radius: 15px;
+   color: rgb(255, 255, 255);
+   background-color: rgb(141, 114, 175);
+   border: none;
+ }
+
+ #joinBtn:hover {
+   background-color: rgb(111, 84, 145);
  }
 
  .top2 {
@@ -64,32 +92,58 @@
    /* 양쪽 정렬 (버튼 왼쪽/오른쪽 배치 등) */
    align-items: center;
    margin: 10px 30px;
+   /* flex-wrap: wrap; */
+   /* gap: 10px; */
  }
 
  #wBtn {
    /* margin-right: 5%; */
-   background-color: white;
    border: none;
-   font-size: 18px;
+
+   font-size: 16px;
+   min-width: 70px;
+   height: 30px;
+   border-radius: 15px;
+   color: rgb(255, 255, 255);
+   background-color: rgb(141, 114, 175);
+
  }
+
+ #wBtn:hover {
+   background-color: rgb(111, 84, 145);
+ }
+
 
  .search {
    display: flex;
-   padding-left: 3%;
-   padding-right: 70%;
- }
+   padding-left: 10px;
+   padding-right: 100px;
+  flex-grow: 1;
+  /* max-width: 500px; */
+  }
+
 
  #searchInput {
    padding-right: 10%;
    margin-right: 5px;
+   border-radius: 15px;
  }
 
  #searchBtn {
    /* padding-right: 10%; */
-   width: 70px;
-   background-color: white;
+
    border: none;
-   font-size: 18px;
+
+   font-size: 16px;
+   width: 70px;
+   height: 30px;
+   border-radius: 15px;
+   color: rgb(255, 255, 255);
+   background-color: rgb(141, 114, 175);
+ }
+
+ #searchBtn:hover {
+   background-color: rgb(111, 84, 145);
  }
 
  /* #loginBtn{
@@ -100,4 +154,35 @@
 
  .hidden {
    display: none !important;
+
+ }
+
+ .loginPage input {
+   width: 250px;
+   height: 30px;
+   margin-top: 5px;
+   padding: 5px 10px;
+   font-size: 16px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+
+ }
+
+ #em #pw {
+   color: rgb(141, 114, 175);
+ }
+
+ #loginBtn {
+   font-size: 16px;
+   width: 60px;
+   height: 30px;
+   border-radius: 15px;
+   color: rgb(255, 255, 255);
+   background-color: rgb(141, 114, 175);
+   border: none;
+  margin-right: 100px;
+ }
+
+ #loginBtn:hover {
+   background-color: rgb(111, 84, 145);
  }

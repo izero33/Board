@@ -18,7 +18,7 @@
     <button id="wBtn">글쓰기</button>
 
     <div class="search">
-      <input type="text" id="searchInput">
+      <input type="text" id="searchInput" >
       <button id="searchBtn">검색</button>
     </div>
 
@@ -33,15 +33,18 @@
   </div> -->
 
   <div class="loginPage hidden">
-    <div>
+    <div id="em">
       <label for="email">이메일</label><br />
-      <input type="email" id="email" style="border: 1px solid #E5E5E5;"><br /><br />
+      <input type="email" id="email" style="border: 1px solid #E5E5E5;" autocomplete="email"><br /><br />
     </div>
-    <div>
+    <div id="pw">
       <label for="password">비밀번호</label><br />
       <input type="password" id="password" style="border: 1px solid #E5E5E5;"><br /><br />
     </div>
+    <div class="btn">
     <button id="loginSubmitBtn">로그인</button>
+    <button id="joinBtn">회원가입</button>
+    </div>
   </div>
 
 
