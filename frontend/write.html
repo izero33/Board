@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>write.html</title>
+  <link rel="stylesheet" href="./writePage.css">
+</head>
+
+<body>
+  <h1 id="top3">자유게시판</h1>
+
+  <form action="write" method="post">
+    <input type="text" name="title" placeholder="제목" required id="titleIn">
+    <input type="text" name="name" placeholder="이름" required id="nameIn">
+    <textarea name="content" required id="contentIn">작성</textarea>
+    <div class="btn">
+      <button id="submitBtn">제출</button>
+      <button id="backBtn">이전</button>
+    </div>
+  </form>
+
+  <script src="writePage.js"></script>
+
+  <script src="listPage.js"></script>
+  <script src="./common.js"></script>
+</body>
+
+</html>

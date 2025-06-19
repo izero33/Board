@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>list.html</title>
+  <link rel="stylesheet" href="./listpageStyle.css">
+
+</head>
+
+<body>
+  <div id="top">
+    <h1 onclick="goHome()">자유게시판</h1>
+  </div>
+
+  <div class="top2">
+    <button id="wBtn">글쓰기</button>
+
+    <div class="search">
+      <input type="text" id="searchInput" >
+      <button id="searchBtn">검색</button>
+    </div>
+
+    <div>
+      <button id="loginBtn" onclick="showLogin()">로그인</button>
+    </div>
+  </div>
+
+  <!-- <div class="loginPage" style="display: none;">
+    이메일 <input type="email" style="border: #E5E5E5;">
+    비밀번호<input type="password" style="border: #E5E5E5;">
+  </div> -->
+
+  <div class="loginPage hidden">
+    <div id="em">
+      <label for="email">이메일</label><br />
+      <input type="email" id="email" style="border: 1px solid #E5E5E5;" autocomplete="email"><br /><br />
+    </div>
+    <div id="pw">
+      <label for="password">비밀번호</label><br />
+      <input type="password" id="password" style="border: 1px solid #E5E5E5;"><br /><br />
+    </div>
+    <div class="btn">
+    <button id="loginSubmitBtn">로그인</button>
+    <button id="joinBtn">회원가입</button>
+    </div>
+  </div>
+
+
+  <div id="boardPage">
+    <table>
+      <colgroup>
+        <col style="width: 8%;">
+        <col style="width: 60%;">
+        <col style="width: 15%;">
+        <col style="width: 15%;">
+        <col style="width: 10%;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>날짜</th>
+          <th>조회수</th>
+        </tr>
+      </thead>
+      <tbody id="tablebody">
+
+      </tbody>
+
+    </table>
+  </div>
+
+  <div class="pagination">
+    <!-- <button onclick="changePage(currentPage - 1)">◀ 이전</button> -->
+    <!-- <button onclick="changePage(1)">1</button>
+  <button onclick="changePage(2)">2</button>
+  <button onclick="changePage(3)">3</button> -->
+    <span id="page-numbers"></span>
+    <!-- <button onclick="changePage(currentPage + 1)">다음 ▶</button> -->
+  </div>
+
+  <script src="listPage.js"></script>
+  <script src="./common.js"></script>
+
+</body>
+
+</html>
