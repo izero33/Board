@@ -1,11 +1,16 @@
-// ✅ listPage.js (프론트엔드 페이징 목록)
+console.log("✅ JS 연결됨");
+
+let currentPage = 1;
 
 function fetchPostList(page = 1) {
-  return fetch(`http://localhost:3000/posts?page=${page}`)
+  return fetch(`/posts?page=${page}`)
     .then(res => res.json());
 }
 
 function renderPage(page) {
+  currentPage = page;
+  console.log("🔥 renderPage 호출: ", page);
+
   fetchPostList(page).then(data => {
     const posts = data.posts;
     const totalCount = data.totalCount;
@@ -26,13 +31,21 @@ function renderPage(page) {
       tbody.appendChild(tr);
     });
 
-    // 페이지 버튼 갱신
     const container = document.querySelector("#page-numbers");
     container.innerHTML = '';
     for (let i = 1; i <= totalPage; i++) {
       const btn = document.createElement("button");
       btn.textContent = i;
-      btn.addEventListener("click", () => renderPage(i));
+
+      if (i === currentPage) {
+        btn.disabled = true;
+        btn.style.fontWeight = 'bold';
+      }
+
+      btn.addEventListener("click", () => {
+        renderPage(i);
+      });
+
       container.appendChild(btn);
     }
   });

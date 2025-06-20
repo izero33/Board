@@ -5,8 +5,12 @@ oracledb.initOracleClient({ libDir: 'C:\\oracle\\instantclient_19_21' });
 
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const path = require('path')
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, '../frontend')));
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -19,11 +23,12 @@ const dbConfig = {
 // ✅ 글 목록 + 페이징 API
 app.get('/posts', async (req, res) => {
   const page = parseInt(req.query.page || '1');
+    console.log("💡 요청받은 페이지:", page);
   const perPage = 5;
   const offset = (page - 1) * perPage;
 
   const bindVars = {
-    startRow: offset,
+    startRow: offset +1 ,
     endRow: offset + perPage
   };
 
@@ -36,12 +41,12 @@ app.get('/posts', async (req, res) => {
 
     const result = await conn.execute(
       `SELECT * FROM (
-         SELECT t.*, ROWNUM AS rn FROM (
-           SELECT * FROM board ORDER BY id DESC
-         ) t
-         WHERE ROWNUM <= :endRow
-       )
-       WHERE rn > :startRow`,
+     SELECT inner_table.*, ROWNUM AS rn FROM (
+       SELECT * FROM board ORDER BY id DESC
+     ) inner_table
+     WHERE ROWNUM <= :endRow
+   )
+   WHERE rn >= :startRow`,
       bindVars
     );
 
